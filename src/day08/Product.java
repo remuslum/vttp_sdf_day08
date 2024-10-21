@@ -1,16 +1,15 @@
 
-
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Product {
     private long id;
     private String productName;
     private String productDescription;
-    private  String productCategory;
+    private String productCategory;
     private float price;
-    private Date createdDate;
+    private LocalDate createdDate;
 
-    public Product(Date createdDate, long id, float price, String productCategory, String productDescription, String productName) {
+    public Product(LocalDate createdDate, long id, float price, String productCategory, String productDescription, String productName) {
         this.createdDate = createdDate;
         this.id = id;
         this.price = price;
@@ -59,21 +58,21 @@ public class Product {
         this.price = price;
     }
 
-    public Date getCreatedDate() {
+    public LocalDate getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
-        return "Product {id=" + id + ", name=" + productName + 
+        return "Product :id=" + id + ", name=" + productName + 
         ", category=" + productCategory + ", description=" 
         + productDescription + ", price=" + price 
         + ", dateCreated=" + createdDate;
     }
 
-
 }
+
