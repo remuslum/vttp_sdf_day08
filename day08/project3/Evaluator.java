@@ -8,16 +8,16 @@ public class Evaluator {
 
     }
 
-    public void evaluate(List<String> output, String guess, String answer){
+    public void evaluate(List<Integer> rightDigitsCounter, String guess, String answer){
         List<Character> answerList = answer.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         List<Character> guessList = guess.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         for(int i = 0; i < guessList.size(); i++){
             if(guessList.get(i).equals(answerList.get(i))){
-                output.add(i, "w");
+                rightDigitsCounter.add(0, rightDigitsCounter.get(0) + 1);
             } else if (answerList.contains(guessList.get(i))){
-                output.add(i, "b");
+                rightDigitsCounter.add(1, rightDigitsCounter.get(1) + 1);
             } else {
-                output.add(i, "r");
+                System.out.printf("This digit %s is not present in the number \n", guessList.get(i));
             }
         }
     }
