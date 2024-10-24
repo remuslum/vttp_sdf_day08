@@ -44,6 +44,6 @@ public class Mastermind {
                 numberOfGuesses++; 
             }  
         }
-        System.out.println(answer);
+        System.out.println("The number is: " + answer);
     }
 }

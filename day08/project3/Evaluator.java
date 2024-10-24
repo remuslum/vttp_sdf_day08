@@ -11,14 +11,28 @@ public class Evaluator {
     public void evaluate(List<Integer> rightDigitsCounter, String guess, String answer){
         List<Character> answerList = answer.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         List<Character> guessList = guess.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        rightDigitsCounter.set(0, evaluateRightNumberRightPosition(answerList, guessList));
+        rightDigitsCounter.set(1, evaluateRightNumberWrongPosition(answerList, guessList));
+    }
+
+    private int evaluateRightNumberRightPosition(List<Character> answerList, List<Character> guessList){
+        int count = 0;
         for(int i = 0; i < guessList.size(); i++){
             if(guessList.get(i).equals(answerList.get(i))){
-                rightDigitsCounter.add(0, rightDigitsCounter.get(0) + 1);
-            } else if (answerList.contains(guessList.get(i))){
-                rightDigitsCounter.add(1, rightDigitsCounter.get(1) + 1);
-            } else {
-                System.out.printf("This digit %s is not present in the number \n", guessList.get(i));
+                count++;
             }
         }
+        return count;
     }
+
+    private int evaluateRightNumberWrongPosition(List<Character> answerList, List<Character> guessList){
+        int count = 0;
+        for(int i = 0; i < guessList.size(); i++){
+            if(!guessList.get(i).equals(answerList.get(i)) && answerList.contains(guessList.get(i))){
+                count++;
+            } 
+        }
+        return count;
+    }
+    
 }
